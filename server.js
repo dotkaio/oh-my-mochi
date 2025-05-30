@@ -22,12 +22,28 @@ app.post('/create-checkout-session', async (req, res) => {
           console.error('Invalid unit amount for item:', item);
           // Handle this error appropriately, maybe skip item or return error
       }
+
+      let imageUrl = null;
+      if (item.image) {
+        if (item.image.startsWith('http')) {
+          imageUrl = item.image;
+        } else {
+          // Properly encode the path parts, especially the filename
+          const imagePathParts = item.image.split('/');
+          const imageName = imagePathParts.pop();
+          const imageDir = imagePathParts.join('/');
+          const encodedImageName = encodeURIComponent(imageName);
+          const encodedImagePath = imageDir ? `${imageDir}/${encodedImageName}` : encodedImageName;
+          imageUrl = `${YOUR_DOMAIN}/${encodedImagePath}`;
+        }
+      }
+
       return {
         price_data: {
           currency: 'usd',
           product_data: {
             name: item.name + (item.size ? ' - ' + item.size : ''),
-            images: item.image ? [item.image.startsWith('http') ? item.image : `${YOUR_DOMAIN}/${item.image}`] : [],
+            images: imageUrl ? [imageUrl] : [],
           },
           unit_amount: unitAmount,
         },
