@@ -625,10 +625,13 @@
           <nav>
             <ul>
               <li><a href="index.html">Home</a></li>
-              <li><a href="shop.html" class="active">Shop</a></li>
-              <li><a href="about.html">About Us</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="about.html" class="active">About Us</a></li>
               <li><a href="reviews.html">Reviews</a></li>
               <li><a href="contact.html">Contact</a></li>
+              <li>
+                <a href="cart.html"><i class="fas fa-shopping-bag"></i></a>
+              </li>
             </ul>
           </nav>
           <button class="mobile-toggle">
@@ -657,34 +660,34 @@
         <div class="product-container">
           <!-- Product Images -->
           <div class="product-images">
-            <img 
-              src="images/Strawberry Miruku 1.heic" 
-              alt="Strawberry Miruku Mochi" 
+            <img
+              src="images/Strawberry Miruku 1.heic"
+              alt="Strawberry Miruku Mochi"
               class="main-image"
               id="main-product-image"
             />
             <div class="thumbnail-images">
-              <img 
-                src="images/Strawberry Miruku 1.heic" 
-                alt="Strawberry Miruku Mochi - View 1" 
+              <img
+                src="images/Strawberry Miruku 1.heic"
+                alt="Strawberry Miruku Mochi - View 1"
                 class="thumbnail active"
                 onclick="changeMainImage(this)"
               />
-              <img 
-                src="images/Strawberry Miruku 2.heic" 
-                alt="Strawberry Miruku Mochi - View 2" 
+              <img
+                src="images/Strawberry Miruku 2.heic"
+                alt="Strawberry Miruku Mochi - View 2"
                 class="thumbnail"
                 onclick="changeMainImage(this)"
               />
-              <img 
-                src="images/Strawberry Miruku 3.heic" 
-                alt="Strawberry Miruku Mochi - View 3" 
+              <img
+                src="images/Strawberry Miruku 3.heic"
+                alt="Strawberry Miruku Mochi - View 3"
                 class="thumbnail"
                 onclick="changeMainImage(this)"
               />
-              <img 
-                src="images/Strawberry Miruku 4.heic" 
-                alt="Strawberry Miruku Mochi - View 4" 
+              <img
+                src="images/Strawberry Miruku 4.heic"
+                alt="Strawberry Miruku Mochi - View 4"
                 class="thumbnail"
                 onclick="changeMainImage(this)"
               />
@@ -1062,7 +1065,9 @@
           let cart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
 
           // Create cart item id
-          const itemId = `${productName.toLowerCase().replace(/\s+/g, "-")}-${size.toLowerCase().replace(/\s+/g, "-")}`;
+          const itemId = `${productName
+            .toLowerCase()
+            .replace(/\s+/g, "-")}-${size.toLowerCase().replace(/\s+/g, "-")}`;
 
           // Create cart item
           const cartItem = {
@@ -1071,8 +1076,8 @@
             size: size,
             price: price,
             qty: qty_pieces, // This is for number of pieces in the box
-            quantity: 1,    // This is for number of boxes in the cart
-            image: imageSrc
+            quantity: 1, // This is for number of boxes in the cart
+            image: imageSrc,
           };
 
           // Check if item already exists in cart
@@ -1100,7 +1105,7 @@
         function changeMainImage(thumbnail) {
           const mainImage = document.getElementById("main-product-image");
           mainImage.src = thumbnail.src;
-          
+
           // Update active thumbnail
           document.querySelectorAll(".thumbnail").forEach((thumb) => {
             thumb.classList.remove("active");
