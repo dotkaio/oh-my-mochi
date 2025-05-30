@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strawberry Miruku | Oh My Mochi</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Custom Properties */
+      :root {
+        --pink-light: #ffe5e8;
+        --pink: #ffccd1;
+        --pink-dark: #ff9fa9;
+        --cream: #fff9f0;
+        --gray-light: #f5f5f5;
+        --gray: #e0e0e0;
+        --gray-dark: #888888;
+        --black: #333333;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        --transition: all 0.3s ease;
+        --radius: 12px;
+      }
+
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        color: var(--black);
+        background-color: white;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h2 {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.2rem;
+        font-weight: 400;
+      }
+
+      a {
+        color: var(--black);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--pink-dark);
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--radius);
+      }
+
+      button,
+      .button {
+        background-color: var(--pink);
+        color: var(--black);
+        border: none;
+        padding: 12px 24px;
+        border-radius: var(--radius);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 1rem;
+        display: inline-block;
+        text-align: center;
+      }
+
+      button:hover,
+      .button:hover {
+        background-color: var(--pink-dark);
+        transform: translateY(-2px);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      /* Header */
+      header {
+        padding: 1.5rem 0;
+        background-color: white;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--shadow);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--black);
+      }
+
+      .logo span {
+        color: var(--pink-dark);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav li {
+        margin-left: 2rem;
+      }
+
+      nav a {
+        font-weight: 500;
+      }
+
+      nav a.active {
+        color: var(--pink-dark);
+        font-weight: 600;
+      }
+
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--black);
+      }
+
+      /* Breadcrumb */
+      .breadcrumb {
+        padding: 8rem 0 2rem;
+        background-color: var(--gray-light);
+      }
+
+      .breadcrumb-nav {
+        display: flex;
+        align-items: center;
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      .breadcrumb-nav a {
+        color: var(--gray-dark);
+      }
+
+      .breadcrumb-nav span {
+        margin: 0 10px;
+      }
+
+      /* Product Section */
+      .product-section {
+        padding: 3rem 0;
+      }
+
+      .product-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .product-images {
+        position: sticky;
+        top: 120px;
+      }
+
+      .main-image {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 1rem;
+      }
+
+      .thumbnail-images {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .thumbnail {
+        height: 80px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: var(--transition);
+        border: 2px solid transparent;
+      }
+
+      .thumbnail:hover,
+      .thumbnail.active {
+        border: 2px solid var(--pink-dark);
+      }
+
+      .product-info {
+        padding-top: 1rem;
+      }
+
+      .product-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .product-description {
+        font-size: 1.1rem;
+        color: var(--gray-dark);
+        margin-bottom: 2rem;
+        line-height: 1.7;
+      }
+
+      .product-highlights {
+        background-color: var(--cream);
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        margin-bottom: 2rem;
+      }
+
+      .highlights-title {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .highlights-title i {
+        margin-right: 8px;
+        color: var(--pink-dark);
+      }
+
+      .highlights-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .highlights-list li {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .highlights-list li i {
+        margin-right: 8px;
+        color: var(--pink-dark);
+        font-size: 0.8rem;
+      }
+
+      .box-options {
+        margin: 2rem 0;
+      }
+
+      .box-options-title {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .box-selector {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+      }
+
+      .box-option {
+        border: 2px solid var(--gray);
+        border-radius: var(--radius);
+        padding: 1rem;
+        text-align: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .box-option:hover,
+      .box-option.selected {
+        border-color: var(--pink-dark);
+        background-color: var(--pink-light);
+      }
+
+      .box-name {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .box-details {
+        font-size: 0.9rem;
+        color: var(--gray-dark);
+        margin-bottom: 8px;
+      }
+
+      .box-price {
+        font-weight: 600;
+        color: var(--pink-dark);
+        font-size: 1.1rem;
+      }
+
+      .add-to-cart-section {
+        background-color: var(--gray-light);
+        padding: 2rem;
+        border-radius: var(--radius);
+        margin: 2rem 0;
+      }
+
+      .price-display {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var (--pink-dark);
+        margin-bottom: 1rem;
+      }
+
+      .add-to-cart {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .pickup-notice {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--pink-light);
+        padding: 10px;
+        border-radius: var(--radius);
+        font-size: 0.9rem;
+      }
+
+      .pickup-notice i {
+        margin-right: 8px;
+        color: var(--pink-dark);
+      }
+
+      /* Product Details Tabs */
+      .product-details {
+        margin-top: 3rem;
+      }
+
+      .tabs {
+        display: flex;
+        border-bottom: 1px solid var(--gray);
+        margin-bottom: 2rem;
+      }
+
+      .tab {
+        padding: 1rem 2rem;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: var(--transition);
+      }
+
+      .tab.active {
+        border-bottom-color: var(--pink-dark);
+        color: var(--pink-dark);
+        font-weight: 600;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .nutrition-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+
+      .nutrition-table th,
+      .nutrition-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--gray);
+      }
+
+      .nutrition-table th {
+        background-color: var(--gray-light);
+        font-weight: 600;
+      }
+
+      /* Related Products */
+      .related-products {
+        padding: 3rem 0;
+        background-color: var(--gray-light);
+      }
+
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .related-card {
+        background-color: white;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .related-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .related-image {
+        height: 200px;
+        background-color: var(--pink-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--pink-dark);
+      }
+
+      .related-info {
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .related-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .related-price {
+        color: var(--pink-dark);
+        font-weight: 600;
+      }
+
+      /* Footer */
+      footer {
+        background-color: white;
+        padding: 3rem 0;
+        border-top: 1px solid var(--gray);
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .footer-about p {
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      .footer-links h4 {
+        margin-bottom: 1rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-contact p {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      .footer-contact i {
+        margin-right: 10px;
+        color: var(--pink-dark);
+      }
+
+      .footer-bottom {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--gray);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .copyright {
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      .legal-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .legal-links a {
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .product-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .product-images {
+          position: static;
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .product-title {
+          font-size: 2rem;
+        }
+
+        .header-inner nav {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+
+        .section {
+          padding: 3rem 0;
+        }
+
+        .breadcrumb {
+          padding: 6rem 0 2rem;
+        }
+
+        .box-selector {
+          grid-template-columns: 1fr;
+        }
+
+        .tabs {
+          flex-direction: column;
+        }
+
+        .tab {
+          border-bottom: 1px solid var(--gray);
+          border-right: none;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        .legal-links {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-inner">
+          <a href="index.html" class="logo">Oh My <span>Mochi</span></a>
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html" class="active">Shop</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+          <button class="mobile-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+      <div class="container">
+        <div class="breadcrumb-nav">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="shop.html">Shop</a>
+          <span>/</span>
+          <span>Strawberry Miruku</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product-section">
+      <div class="container">
+        <div class="product-container">
+          <!-- Product Images -->
+          <div class="product-images">
+            <img 
+              src="images/Strawberry Miruku 1.heic" 
+              alt="Strawberry Miruku Mochi" 
+              class="main-image"
+              id="main-product-image"
+            />
+            <div class="thumbnail-images">
+              <img 
+                src="images/Strawberry Miruku 1.heic" 
+                alt="Strawberry Miruku Mochi - View 1" 
+                class="thumbnail active"
+                onclick="changeMainImage(this)"
+              />
+              <img 
+                src="images/Strawberry Miruku 2.heic" 
+                alt="Strawberry Miruku Mochi - View 2" 
+                class="thumbnail"
+                onclick="changeMainImage(this)"
+              />
+              <img 
+                src="images/Strawberry Miruku 3.heic" 
+                alt="Strawberry Miruku Mochi - View 3" 
+                class="thumbnail"
+                onclick="changeMainImage(this)"
+              />
+              <img 
+                src="images/Strawberry Miruku 4.heic" 
+                alt="Strawberry Miruku Mochi - View 4" 
+                class="thumbnail"
+                onclick="changeMainImage(this)"
+              />
+            </div>
+          </div>
+
+          <!-- Product Info -->
+          <div class="product-info">
+            <h1 class="product-title">Strawberry Miruku</h1>
+            <p class="product-description">
+              Indulge in our signature Strawberry Miruku mochi - a delightful
+              fusion of creamy strawberry-flavored filling wrapped in our
+              perfectly chewy mochi exterior. Made with real strawberry puree
+              and premium ingredients, each bite delivers a burst of sweet,
+              creamy goodness that melts in your mouth.
+            </p>
+
+            <div class="product-highlights">
+              <h3 class="highlights-title">
+                <i class="fas fa-star"></i>
+                Why You'll Love It
+              </h3>
+              <ul class="highlights-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>Made with real strawberry
+                  puree
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Creamy, smooth filling
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>Perfectly chewy mochi
+                  texture
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>No artificial colors or
+                  flavors
+                </li>
+                <li><i class="fas fa-check-circle"></i>Fresh made daily</li>
+              </ul>
+            </div>
+
+            <div class="box-options">
+              <h3 class="box-options-title">Choose Your Box Size</h3>
+              <div class="box-selector">
+                <div
+                  class="box-option"
+                  data-price="8.99"
+                  data-qty="6"
+                  data-size="Small Box"
+                >
+                  <div class="box-name">Small Box</div>
+                  <div class="box-details">6 pieces</div>
+                  <div class="box-price">$8.99</div>
+                </div>
+                <div
+                  class="box-option selected"
+                  data-price="15.99"
+                  data-qty="12"
+                  data-size="Medium Box"
+                >
+                  <div class="box-name">Medium Box</div>
+                  <div class="box-details">12 pieces</div>
+                  <div class="box-price">$15.99</div>
+                </div>
+                <div
+                  class="box-option"
+                  data-price="22.99"
+                  data-qty="18"
+                  data-size="Large Box"
+                >
+                  <div class="box-name">Large Box</div>
+                  <div class="box-details">18 pieces</div>
+                  <div class="box-price">$22.99</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="add-to-cart-section">
+              <div class="price-display" id="price-display">$15.99</div>
+              <button
+                class="add-to-cart"
+                id="add-to-cart-btn"
+                data-product="Strawberry Miruku"
+                data-price="15.99"
+                data-qty="12"
+                data-size="Medium Box"
+              >
+                Add to Cart
+              </button>
+              <div class="pickup-notice">
+                <i class="fas fa-store"></i>
+                Pickup only - We do not offer shipping at this time
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Details Tabs -->
+        <div class="product-details">
+          <div class="tabs">
+            <div class="tab active" data-tab="description">Description</div>
+            <div class="tab" data-tab="ingredients">Ingredients</div>
+            <div class="tab" data-tab="nutrition">Nutrition</div>
+            <div class="tab" data-tab="allergens">Allergens</div>
+          </div>
+
+          <div class="tab-content active" id="description">
+            <h3>Product Description</h3>
+            <p>
+              Our Strawberry Miruku mochi represents the perfect harmony between
+              Japanese tradition and modern flavor innovation. Each piece
+              features a delicate, pillowy-soft mochi shell made from premium
+              glutinous rice flour, filled with our signature strawberry cream
+              that's crafted using real strawberry puree sourced from local
+              farms.
+            </p>
+            <p>
+              The name "Miruku" comes from the Japanese word for milk,
+              reflecting the creamy, indulgent texture of our filling. We've
+              perfected the balance between the sweet, fruity strawberry flavor
+              and the subtle earthiness of the mochi, creating a dessert that's
+              both familiar and exotic.
+            </p>
+            <p>
+              Best enjoyed fresh, our Strawberry Miruku mochi should be consumed
+              within 2-3 days of purchase for optimal texture and flavor.
+            </p>
+          </div>
+
+          <div class="tab-content" id="ingredients">
+            <h3>Ingredients</h3>
+            <p>
+              <strong>Mochi Shell:</strong> Glutinous rice flour, sugar, water,
+              cornstarch, natural vanilla extract
+            </p>
+            <p>
+              <strong>Strawberry Cream Filling:</strong> Heavy cream, strawberry
+              puree, sugar, cream cheese, cornstarch, natural strawberry flavor,
+              citric acid
+            </p>
+            <p><strong>Dusting:</strong> Cornstarch, powdered sugar</p>
+            <p>
+              All ingredients are sourced from trusted suppliers and meet our
+              high-quality standards. We use no artificial preservatives or
+              colors.
+            </p>
+          </div>
+
+          <div class="tab-content" id="nutrition">
+            <h3>Nutritional Information</h3>
+            <p><em>Per piece (approximately 30g)</em></p>
+            <table class="nutrition-table">
+              <tr>
+                <th>Nutrient</th>
+                <th>Amount</th>
+                <th>% Daily Value</th>
+              </tr>
+              <tr>
+                <td>Calories</td>
+                <td>85</td>
+                <td>4%</td>
+              </tr>
+              <tr>
+                <td>Total Fat</td>
+                <td>2.5g</td>
+                <td>3%</td>
+              </tr>
+              <tr>
+                <td>Saturated Fat</td>
+                <td>1.5g</td>
+                <td>8%</td>
+              </tr>
+              <tr>
+                <td>Cholesterol</td>
+                <td>8mg</td>
+                <td>3%</td>
+              </tr>
+              <tr>
+                <td>Sodium</td>
+                <td>15mg</td>
+                <td>1%</td>
+              </tr>
+              <tr>
+                <td>Total Carbohydrates</td>
+                <td>16g</td>
+                <td>6%</td>
+              </tr>
+              <tr>
+                <td>Dietary Fiber</td>
+                <td>0g</td>
+                <td>0%</td>
+              </tr>
+              <tr>
+                <td>Total Sugars</td>
+                <td>8g</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Protein</td>
+                <td>1.5g</td>
+                <td>3%</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="tab-content" id="allergens">
+            <h3>Allergen Information</h3>
+            <p><strong>Contains:</strong> Dairy (cream, cream cheese)</p>
+            <p><strong>May Contain:</strong> Soy, eggs, tree nuts</p>
+            <p>
+              <strong>Gluten-Free:</strong> Yes, made with glutinous rice flour
+              (which is naturally gluten-free despite the name)
+            </p>
+            <p>
+              Our facility also processes products containing wheat, eggs, soy,
+              tree nuts, and peanuts. While we take precautions to prevent
+              cross-contamination, we cannot guarantee that any product is
+              completely free from these allergens.
+            </p>
+            <p>
+              If you have severe allergies, please contact us before ordering to
+              discuss your specific needs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+      <div class="container">
+        <h2 class="text-center">You Might Also Like</h2>
+        <div class="related-grid">
+          <div class="related-card">
+            <div class="related-image">
+              <i class="fas fa-cookie-bite"></i>
+            </div>
+            <div class="related-info">
+              <h3 class="related-title">Cookies & Cream</h3>
+              <p class="related-price">From $8.99</p>
+              <a href="cookies-cream.html" class="button">View Details</a>
+            </div>
+          </div>
+          <div class="related-card">
+            <div class="related-image">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <div class="related-info">
+              <h3 class="related-title">Matcha Green Tea</h3>
+              <p class="related-price">From $9.99</p>
+              <a href="#" class="button">View Details</a>
+            </div>
+          </div>
+          <div class="related-card">
+            <div class="related-image">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div class="related-info">
+              <h3 class="related-title">Taro</h3>
+              <p class="related-price">From $9.99</p>
+              <a href="#" class="button">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-about">
+            <div class="footer-logo">Oh My <span>Mochi</span></div>
+            <p>
+              Handcrafted Thai-inspired mochi desserts made fresh daily with
+              premium ingredients.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="terms.html">Terms of Service</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="allergens.html">Allergen Info</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Info</h4>
+            <p>
+              <i class="fas fa-map-marker-alt"></i>123 Main Street, City, State
+              12345
+            </p>
+            <p><i class="fas fa-phone"></i>(555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i>hello@ohmymochi.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="copyright">© 2025 Oh My Mochi. All rights reserved.</div>
+          <div class="legal-links">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="allergens.html">Allergens</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Box selection functionality
+        const boxOptions = document.querySelectorAll(".box-option");
+        const priceDisplay = document.getElementById("price-display");
+        const addToCartBtn = document.getElementById("add-to-cart-btn");
+
+        boxOptions.forEach((option) => {
+          option.addEventListener("click", function () {
+            // Remove selected class from all options
+            boxOptions.forEach((opt) => opt.classList.remove("selected"));
+
+            // Add selected class to clicked option
+            this.classList.add("selected");
+
+            // Update price display and button attributes
+            const price = this.dataset.price;
+            const qty = this.dataset.qty;
+            const size = this.dataset.size;
+
+            priceDisplay.textContent = `$${price}`;
+            addToCartBtn.setAttribute("data-price", price);
+            addToCartBtn.setAttribute("data-qty", qty);
+            addToCartBtn.setAttribute("data-size", size);
+          });
+        });
+
+        // Tab functionality
+        const tabs = document.querySelectorAll(".tab");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", function () {
+            const targetTab = this.dataset.tab;
+
+            // Remove active class from all tabs and contents
+            tabs.forEach((t) => t.classList.remove("active"));
+            tabContents.forEach((content) =>
+              content.classList.remove("active")
+            );
+
+            // Add active class to clicked tab and corresponding content
+            this.classList.add("active");
+            document.getElementById(targetTab).classList.add("active");
+          });
+        });
+
+        // Add to cart functionality
+        addToCartBtn.addEventListener("click", function () {
+          const productName = this.dataset.product;
+          const price = parseFloat(this.dataset.price);
+          const qty_pieces = parseInt(this.dataset.qty); // Renamed to avoid confusion with cart quantity
+          const size = this.dataset.size;
+          const imageSrc = document.getElementById("main-product-image").src;
+
+          // Get existing cart or create new one
+          let cart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+
+          // Create cart item id
+          const itemId = `${productName.toLowerCase().replace(/\s+/g, "-")}-${size.toLowerCase().replace(/\s+/g, "-")}`;
+
+          // Create cart item
+          const cartItem = {
+            id: itemId,
+            name: productName,
+            size: size,
+            price: price,
+            qty: qty_pieces, // This is for number of pieces in the box
+            quantity: 1,    // This is for number of boxes in the cart
+            image: imageSrc
+          };
+
+          // Check if item already exists in cart
+          const existingItemIndex = cart.findIndex(
+            (item) => item.id === cartItem.id
+          );
+
+          if (existingItemIndex > -1) {
+            // Update quantity if item exists
+            cart[existingItemIndex].quantity += 1;
+            // No need to update totalPrice here, it's calculated in the cart page
+          } else {
+            // Add new item to cart
+            cart.push(cartItem);
+          }
+
+          // Save cart to localStorage
+          localStorage.setItem("shoppingCart", JSON.stringify(cart));
+
+          // Show success message
+          showAddToCartMessage(productName, size);
+        });
+
+        // Thumbnail functionality
+        function changeMainImage(thumbnail) {
+          const mainImage = document.getElementById("main-product-image");
+          mainImage.src = thumbnail.src;
+          
+          // Update active thumbnail
+          document.querySelectorAll(".thumbnail").forEach((thumb) => {
+            thumb.classList.remove("active");
+          });
+          thumbnail.classList.add("active");
+        }
+
+        const thumbnails = document.querySelectorAll(".thumbnail");
+        thumbnails.forEach((thumb, index) => {
+          thumb.addEventListener("click", function () {
+            changeMainImage(this);
+          });
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector(".mobile-toggle");
+        const nav = document.querySelector("nav");
+
+        if (mobileToggle) {
+          mobileToggle.addEventListener("click", function () {
+            nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+          });
+        }
+
+        // Function to show add to cart message
+        function showAddToCartMessage(productName, size) {
+          // Create message element
+          const message = document.createElement("div");
+          message.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: -400px;
+            background-color: var(--pink);
+            color: var(--black);
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+            max-width: 300px;
+          `;
+          message.innerHTML = `
+            <strong>${productName}</strong> (${size}) added to cart!
+          `;
+
+          document.body.appendChild(message);
+
+          // Animate in
+          setTimeout(() => {
+            message.style.transform = "translateX(-420px)";
+          }, 100);
+
+          // Remove after 3 seconds
+          setTimeout(() => {
+            message.style.transform = "translateX(0)";
+            setTimeout(() => {
+              document.body.removeChild(message);
+            }, 300);
+          }, 3000);
+        }
+      });
+    </script>
+  </body>
+</html>

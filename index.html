@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oh My Mochi | Premium Thai-Inspired Mochi</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Custom Properties */
+      :root {
+        --pink-light: #ffe5e8;
+        --pink: #ffccd1;
+        --pink-dark: #ff9fa9;
+        --cream: #fff9f0;
+        --gray-light: #f5f5f5;
+        --gray: #e0e0e0;
+        --gray-dark: #888888;
+        --black: #333333;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        --transition: all 0.3s ease;
+        --radius: 12px;
+      }
+
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        color: var(--black);
+        background-color: white;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h2 {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.2rem;
+        font-weight: 400;
+      }
+
+      a {
+        color: var(--black);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--pink-dark);
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--radius);
+      }
+
+      button,
+      .button {
+        background-color: var(--pink);
+        color: var(--black);
+        border: none;
+        padding: 12px 24px;
+        border-radius: var(--radius);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 1rem;
+        display: inline-block;
+        text-align: center;
+      }
+
+      button:hover,
+      .button:hover {
+        background-color: var(--pink-dark);
+        transform: translateY(-2px);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .subtitle {
+        color: var(--gray-dark);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Header */
+      header {
+        padding: 1.5rem 0;
+        background-color: white;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--shadow);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--black);
+      }
+
+      .logo span {
+        color: var(--pink-dark);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav li {
+        margin-left: 2rem;
+      }
+
+      nav a {
+        font-weight: 500;
+      }
+
+      nav a.active {
+        color: var(--pink-dark);
+        font-weight: 600;
+      }
+
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--black);
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background-color: var(--pink-light);
+        margin-top: 80px;
+      }
+
+      .hero-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .hero-content {
+        width: 50%;
+        padding-right: 2rem;
+      }
+
+      .hero-image {
+        width: 60%;
+      }
+
+      .tagline {
+        font-size: 1.2rem;
+        color: var(--pink-dark);
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+
+      .pickup-notice {
+        display: inline-flex;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 10px 15px;
+        border-radius: var(--radius);
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+      }
+
+      .pickup-notice i {
+        margin-right: 8px;
+        color: var(--pink-dark);
+      }
+
+      /* Featured Products */
+      .featured-products {
+        background-color: white;
+      }
+
+      .products-grid {
+        display: flex;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .product-card {
+        background-color: var(--gray-light);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .product-image {
+        /* height: 200px; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--pink-light);
+      }
+
+      .product-info {
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .product-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .product-description {
+        color: var(--gray-dark);
+        margin-bottom: 1.5rem;
+      }
+
+      /* Info Section */
+      .info-section {
+        background-color: var(--cream);
+      }
+
+      .info-container {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+      }
+
+      .info-content {
+        flex: 1;
+      }
+
+      .info-image {
+        flex: 1;
+      }
+
+      .info-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .info-card {
+        background-color: white;
+        padding: 2rem;
+        border-radius: var(--radius);
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+
+      .info-card-icon {
+        font-size: 2.5rem;
+        color: var(--pink-dark);
+        margin-bottom: 1rem;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background-color: var(--pink-light);
+        text-align: center;
+      }
+
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .btn-secondary {
+        background-color: white;
+        border: 2px solid var(--pink);
+      }
+
+      /* Footer */
+      footer {
+        background-color: white;
+        padding: 3rem 0;
+        border-top: 1px solid var(--gray);
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .footer-about p {
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      .footer-links h4 {
+        margin-bottom: 1rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-contact p {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      .footer-contact i {
+        margin-right: 10px;
+        color: var(--pink-dark);
+      }
+
+      .footer-bottom {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--gray);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .copyright {
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      .legal-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .legal-links a {
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        .hero-content,
+        .hero-image {
+          width: 100%;
+          padding-right: 0;
+        }
+
+        .hero-inner {
+          flex-direction: column;
+          gap: 3rem;
+        }
+
+        .info-container {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          font-size: 1.75rem;
+        }
+
+        .header-inner nav {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+
+        .hero {
+          margin-top: 70px;
+          padding: 3rem 0;
+        }
+
+        .section {
+          padding: 3rem 0;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        .legal-links {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-inner">
+          <a href="index.html" class="logo">Oh My <span>Mochi</span></a>
+          <nav>
+            <ul>
+              <li><a href="index.html" class="active">Home</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li>
+                <a href="cart.html"><i class="fas fa-shopping-bag"></i></a>
+              </li>
+            </ul>
+          </nav>
+          <button class="mobile-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero section">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <div class="tagline">Handcrafted with Love</div>
+            <h1>Experience the Delightful World of Premium Mochi</h1>
+            <p class="subtitle">
+              Indulge in our handcrafted, small-batch mochi desserts with
+              authentic recipes inspired by Thailand. Made with the finest
+              ingredients for an unforgettable sweet experience.
+            </p>
+            <div class="pickup-notice">
+              <i class="fas fa-store"></i> Pickup Only We do not offer shipping
+              at this time
+            </div>
+            <a href="shop.html" class="button">Shop Now</a>
+          </div>
+          <div class="hero-image">
+            <img
+              src="images/Cookies & Cream 1.heic"
+              alt="Delicious Mochi Desserts"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products section">
+      <div class="container">
+        <div class="text-center">
+          <h2>Our Most Popular Flavors</h2>
+          <p class="subtitle">
+            Discover our handcrafted Thai-inspired mochi desserts, made fresh
+            daily with premium ingredients.
+          </p>
+        </div>
+        <div class="products-grid">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="images/Strawberry Miruku 1.heic"
+                alt="Strawberry Miruku Mochi"
+              />
+            </div>
+            <div class="product-info">              <h3 class="product-title">Strawberry Miruku</h3>
+              <p class="product-description">
+                Sweet strawberry mochi with a creamy milk filling. A perfect
+                balance of fruity and creamy flavors.
+              </p>
+              <a href="strawberry-miruku.html" class="button">View Details</a>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="images/Cookies & Cream 1.heic"
+                alt="Cookies & Cream Mochi"
+              />
+            </div>
+            <div class="product-info">              <h3 class="product-title">Cookies & Cream</h3>
+              <p class="product-description">
+                Rich cookies and cream mochi with cookie crumbles. A delightful
+                twist on a classic favorite.
+              </p>
+              <a href="cookies-cream.html" class="button">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section section">
+      <div class="container">
+        <div class="info-container">
+          <div class="info-content">
+            <h2>Handcrafted Thai-Inspired Mochi</h2>
+            <p>
+              At Oh My Mochi, we bring you handcrafted, small-batch mochi with
+              authentic recipes inspired by Thailand. We fuse traditional
+              flavors with a modern dessert experience.
+            </p>
+            <p>
+              Each mochi is carefully made using premium ingredients and
+              traditional techniques, resulting in a delightful treat that melts
+              in your mouth.
+            </p>
+            <a href="about.html" class="button">Our Story</a>
+          </div>
+          <div class="info-image">
+            <img
+              src="https://ohmymochi.com/api/placeholder/500/400"
+              alt="Handcrafting Mochi"
+            />
+          </div>
+        </div>
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-card-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3>Premium Ingredients</h3>
+            <p>
+              We use only the finest ingredients to ensure quality and authentic
+              flavors in every bite.
+            </p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">
+              <i class="fas fa-hands"></i>
+            </div>
+            <h3>Handcrafted Daily</h3>
+            <p>
+              Each mochi is made fresh daily in small batches to ensure the
+              perfect texture and taste.
+            </p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon">
+              <i class="fas fa-store"></i>
+            </div>
+            <h3>Local Pickup</h3>
+            <p>
+              We offer convenient pickup options so you can enjoy our mochi at
+              its freshest.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Experience Oh My Mochi?</h2>
+          <p class="subtitle">
+            Browse our selection of flavors and place your order for pickup
+            today.
+          </p>
+          <div class="cta-buttons">
+            <a href="shop.html" class="button">Shop Now</a>
+            <a href="contact.html" class="button btn-secondary">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-about">
+            <div class="footer-logo">Oh My <span>Mochi</span></div>
+            <p>
+              Handcrafted, small-batch mochi with authentic recipes inspired by
+              Thailand. Available for pickup only.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Information</h4>
+            <ul>
+              <li><a href="terms.html">Terms of Service</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="allergens.html">Allergen Information</a></li>
+              <li><a href="index.html#">Business License</a></li>
+              <li><a href="index.html#">CFO Compliance</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><i class="fas fa-envelope"></i> simplymochi.ca@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> California, USA</p>
+            <p><i class="fas fa-store"></i> Pickup Only - No Shipping</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="copyright">© 2025 Oh My Mochi. All rights reserved.</div>
+          <div class="legal-links">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="allergens.html">Allergens</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

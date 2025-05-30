@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Oh My Mochi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Properties */
+        :root {
+            --pink-light: #ffe5e8;
+            --pink: #ffccd1;
+            --pink-dark: #ff9fa9;
+            --cream: #fff9f0;
+            --gray-light: #f5f5f5;
+            --gray: #e0e0e0;
+            --gray-dark: #666666;
+            --black: #222222;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+            --radius: 12px;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--black);
+            background-color: white;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.3;
+            color: #111111;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+            font-size: 1.05rem;
+            color: #333333;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: var(--pink-dark);
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+        }
+
+        button, .button {
+            background-color: var(--pink-dark);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            display: inline-block;
+            text-align: center;
+        }
+
+        button:hover, .button:hover {
+            background-color: #ff8393;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #555555;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 0;
+            background-color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .logo span {
+            color: var(--pink-dark);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--black);
+        }
+
+        nav a.active {
+            color: var(--pink-dark);
+            font-weight: 700;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: var(--pink-light);
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        /* Terms Section */
+        .terms-section {
+            padding: 5rem 0;
+        }
+
+        .terms-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .terms-date {
+            text-align: right;
+            color: var(--gray-dark);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .terms-section h2 {
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .terms-section h3 {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .terms-section p, .terms-section ul, .terms-section ol {
+            margin-bottom: 1.5rem;
+        }
+
+        .terms-section ul, .terms-section ol {
+            padding-left: 2rem;
+        }
+
+        .terms-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .terms-section strong {
+            font-weight: 600;
+        }
+
+        .terms-intro {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            background-color: var(--cream);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 2rem 0;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--pink);
+            color: var(--black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--pink-dark);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f8f8f8;
+            padding: 3rem 0;
+            border-top: 1px solid var(--gray);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .footer-logo span {
+            color: var(--pink-dark);
+        }
+
+        .footer-about p {
+            color: #555555;
+            font-size: 0.95rem;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #555555;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #555555;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--pink-dark);
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: #555555;
+            font-size: 0.9rem;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .legal-links a {
+            color: #555555;
+            font-size: 0.9rem;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background-color: var(--gray-light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: var(--black);
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        .toc a:hover {
+            color: var(--pink-dark);
+            transform: translateX(5px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .header-inner nav {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .page-header {
+                padding: 6rem 0 3rem;
+            }
+
+            .terms-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .legal-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">Oh My <span>Mochi</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="cart.html"><i class="fas fa-shopping-bag"></i></a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Terms of Service</h1>
+            <p class="subtitle">Please read these terms and conditions carefully before using our website.</p>
+        </div>
+    </section>
+
+    <!-- Terms Section -->
+    <section class="terms-section">
+        <div class="container">
+            <div class="terms-container">
+                <div class="terms-date">Last Updated: April 10, 2025</div>
+                
+                <div class="terms-intro">
+                    <p>Welcome to Oh My Mochi! These Terms of Service ("Terms") govern your use of the Oh My Mochi website (https://ohmymochi.com) operated by Oh My Mochi ("we," "us," or "our"). By accessing or using our website, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our website.</p>
+                </div>
+                
+                <div class="toc">
+                    <h3>Table of Contents</h3>
+                    <ul>
+                        <li><a href="terms.html#acceptance">1. Acceptance of Terms</a></li>
+                        <li><a href="terms.html#changes">2. Changes to Terms</a></li>
+                        <li><a href="terms.html#access">3. Access and Use of the Website</a></li>
+                        <li><a href="terms.html#account">4. Account Registration</a></li>
+                        <li><a href="terms.html#products">5. Products and Ordering</a></li>
+                        <li><a href="terms.html#payments">6. Payments and Pricing</a></li>
+                        <li><a href="terms.html#pickup">7. Pickup Policy</a></li>
+                        <li><a href="terms.html#cancellations">8. Cancellations and Refunds</a></li>
+                        <li><a href="terms.html#intellectual">9. Intellectual Property</a></li>
+                        <li><a href="terms.html#disclaimer">10. Disclaimer of Warranties</a></li>
+                        <li><a href="terms.html#limitation">11. Limitation of Liability</a></li>
+                        <li><a href="terms.html#indemnification">12. Indemnification</a></li>
+                        <li><a href="terms.html#governing">13. Governing Law</a></li>
+                        <li><a href="terms.html#disputes">14. Dispute Resolution</a></li>
+                        <li><a href="terms.html#severability">15. Severability</a></li>
+                        <li><a href="terms.html#entire">16. Entire Agreement</a></li>
+                        <li><a href="terms.html#contact">17. Contact Information</a></li>
+                    </ul>
+                </div>
+                
+                <h2 id="acceptance">1. Acceptance of Terms</h2>
+                <p>By accessing or using our website, you acknowledge that you have read, understood, and agree to be bound by these Terms, as well as our Privacy Policy. If you do not agree to these Terms, you must not access or use our website.</p>
+                
+                <h2 id="changes">2. Changes to Terms</h2>
+                <p>We reserve the right to modify these Terms at any time in our sole discretion. Any changes will be effective immediately upon posting the updated Terms on this page. Your continued use of the website following the posting of revised Terms means that you accept and agree to the changes. We encourage you to periodically review this page for the latest information on our Terms.</p>
+                
+                <h2 id="access">3. Access and Use of the Website</h2>
+                <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, and revocable license to access and use our website for your personal, non-commercial use. You agree not to:</p>
+                <ul>
+                    <li>Use the website in any way that violates any applicable federal, state, local, or international law or regulation</li>
+                    <li>Use the website to send, knowingly receive, upload, download, use, or re-use any material that violates these Terms</li>
+                    <li>Attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of the website, the server on which the website is stored, or any server, computer, or database connected to the website</li>
+                    <li>Attack the website via a denial-of-service attack or a distributed denial-of-service attack</li>
+                    <li>Use any robot, spider, or other automatic device, process, or means to access the website for any purpose, including monitoring or copying any of the material on the website</li>
+                </ul>
+                
+                <h2 id="account">4. Account Registration</h2>
+                <p>You may be required to create an account to access certain features of our website. When you create an account, you must provide accurate and complete information. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to notify us immediately of any unauthorized access to or use of your account.</p>
+                
+                <h2 id="products">5. Products and Ordering</h2>
+                <p>Products displayed on our website are subject to availability. We reserve the right to limit quantities of products purchased and to discontinue products at any time without notice. Product descriptions and images are for illustrative purposes only and may vary from actual products.</p>
+                <p>By placing an order, you are making an offer to purchase the products. We reserve the right to accept or reject any order for any reason. Your order is confirmed only when you receive a confirmation email from us.</p>
+                
+                <h2 id="payments">6. Payments and Pricing</h2>
+                <p>All prices listed on our website are in US Dollars and are subject to applicable taxes. Prices are subject to change without notice. We accept payment through the payment methods specified on our website, which are processed by our third-party payment processor, Stripe.</p>
+                <p>By providing payment information, you represent and warrant that you have the legal right to use the payment method provided and that the information you supply is true and correct.</p>
+                
+                <h2 id="pickup">7. Pickup Policy</h2>
+                <p>Oh My Mochi is a pickup-only business. We do not offer delivery or shipping services. Orders must be picked up at our designated location during the pickup time selected during checkout. You must present your order confirmation (either digitally or printed) and a valid ID when picking up your order.</p>
+                <p>If you fail to pick up your order during the selected pickup time, we may hold your order for up to 24 hours after the scheduled pickup time. After 24 hours, unclaimed orders will be considered abandoned, and no refund will be issued.</p>
+                
+                <h2 id="cancellations">8. Cancellations and Refunds</h2>
+                <p>You may cancel your order and receive a full refund up to 24 hours before your scheduled pickup time. To cancel your order, please contact us at simplymochi.ca@gmail.com with your order number.</p>
+                <p>For cancellations made less than 24 hours before the scheduled pickup time, we may charge a 50% cancellation fee. No refunds will be issued for orders not picked up during the scheduled pickup time.</p>
+                <p>If you receive a product that is damaged or defective, please contact us immediately at simplymochi.ca@gmail.com. We will work to resolve the issue promptly.</p>
+                
+                <h2 id="intellectual">9. Intellectual Property</h2>
+                <p>The website and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof) are owned by Oh My Mochi, its licensors, or other providers of such material and are protected by United States and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+                <p>You must not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our website, except as follows:</p>
+                <ul>
+                    <li>Your computer may temporarily store copies of such materials in RAM incidental to your accessing and viewing those materials</li>
+                    <li>You may store files that are automatically cached by your web browser for display enhancement purposes</li>
+                    <li>You may print or download one copy of a reasonable number of pages of the website for your own personal, non-commercial use and not for further reproduction, publication, or distribution</li>
+                </ul>
+                
+                <h2 id="disclaimer">10. Disclaimer of Warranties</h2>
+                <p>THE WEBSITE AND ALL INFORMATION, CONTENT, MATERIALS, PRODUCTS, AND SERVICES INCLUDED ON OR OTHERWISE MADE AVAILABLE TO YOU THROUGH THE WEBSITE ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, UNLESS OTHERWISE SPECIFIED IN WRITING. WE MAKE NO REPRESENTATIONS OR WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, AS TO THE OPERATION OF THE WEBSITE OR THE INFORMATION, CONTENT, MATERIALS, PRODUCTS, OR SERVICES INCLUDED ON OR OTHERWISE MADE AVAILABLE TO YOU THROUGH THE WEBSITE, UNLESS OTHERWISE SPECIFIED IN WRITING.</p>
+                <p>TO THE FULL EXTENT PERMISSIBLE BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. WE DO NOT WARRANT THAT THE WEBSITE, ITS CONTENT, OR ANY SERVICES OR ITEMS OBTAINED THROUGH THE WEBSITE WILL BE ACCURATE, RELIABLE, ERROR-FREE, OR UNINTERRUPTED, THAT DEFECTS WILL BE CORRECTED, OR THAT THE WEBSITE OR THE SERVER THAT MAKES IT AVAILABLE ARE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.</p>
+                
+                <h2 id="limitation">11. Limitation of Liability</h2>
+                <p>IN NO EVENT WILL WE, OUR AFFILIATES, OR THEIR LICENSORS, SERVICE PROVIDERS, EMPLOYEES, AGENTS, OFFICERS, OR DIRECTORS BE LIABLE FOR DAMAGES OF ANY KIND, UNDER ANY LEGAL THEORY, ARISING OUT OF OR IN CONNECTION WITH YOUR USE, OR INABILITY TO USE, THE WEBSITE, ANY WEBSITES LINKED TO IT, ANY CONTENT ON THE WEBSITE OR SUCH OTHER WEBSITES, INCLUDING ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO, PERSONAL INJURY, PAIN AND SUFFERING, EMOTIONAL DISTRESS, LOSS OF REVENUE, LOSS OF PROFITS, LOSS OF BUSINESS OR ANTICIPATED SAVINGS, LOSS OF USE, LOSS OF GOODWILL, LOSS OF DATA, AND WHETHER CAUSED BY TORT (INCLUDING NEGLIGENCE), BREACH OF CONTRACT, OR OTHERWISE, EVEN IF FORESEEABLE.</p>
+                
+                <h2 id="indemnification">12. Indemnification</h2>
+                <p>You agree to defend, indemnify, and hold harmless Oh My Mochi, its affiliates, licensors, and service providers, and its and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of the website.</p>
+                
+                <h2 id="governing">13. Governing Law</h2>
+                <p>These Terms shall be governed by and construed in accordance with the laws of the State of California, without giving effect to any principles of conflicts of law. Any legal action or proceeding relating to your access to, or use of, the website or these Terms shall be instituted in a state or federal court in Los Angeles County, California, and you agree to submit to the personal jurisdiction of such courts.</p>
+                
+                <h2 id="disputes">14. Dispute Resolution</h2>
+                <p>Any dispute arising from or relating to these Terms or the website will first be resolved through good-faith negotiations. If such negotiations fail, the dispute shall be resolved through binding arbitration, to be conducted in Los Angeles, California, in accordance with the rules of the American Arbitration Association.</p>
+                
+                <h2 id="severability">15. Severability</h2>
+                <p>If any provision of these Terms is held to be unlawful, void, or for any reason unenforceable, then that provision shall be deemed severable from these Terms and shall not affect the validity and enforceability of any remaining provisions.</p>
+                
+                <h2 id="entire">16. Entire Agreement</h2>
+                <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and Oh My Mochi regarding the website and supersede all prior and contemporaneous understandings, agreements, representations, and warranties, both written and oral, regarding the website.</p>
+                
+                <h2 id="contact">17. Contact Information</h2>
+                <div class="contact-info">
+                    <p>If you have any questions or concerns about these Terms, please contact us at:</p>
+                    <p><strong>Email:</strong> simplymochi.ca@gmail.com</p>
+                    <p><strong>Address:</strong> California, USA</p>
+                </div>
+                
+                <p>Thank you for reading our Terms of Service. We hope you enjoy our delicious mochi!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <a href="terms.html#" class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Oh My <span>Mochi</span></div>
+                    <p>Handcrafted, small-batch mochi with authentic recipes inspired by Thailand. Available for pickup only.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="allergens.html">Allergen Information</a></li>
+                        <li><a href="terms.html#">Business License</a></li>
+                        <li><a href="terms.html#">CFO Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> simplymochi.ca@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> California, USA</p>
+                    <p><i class="fas fa-store"></i> Pickup Only - No Shipping</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2025 Oh My Mochi. All rights reserved.
+                </div>
+                <div class="legal-links">
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="allergens.html">Allergens</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const nav = document.querySelector('nav');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+            
+            // Back to top button
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Smooth scrolling for table of contents
+            const tocLinks = document.querySelectorAll('.toc a');
+            
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

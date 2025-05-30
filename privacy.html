@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Oh My Mochi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Properties */
+        :root {
+            --pink-light: #ffe5e8;
+            --pink: #ffccd1;
+            --pink-dark: #ff9fa9;
+            --cream: #fff9f0;
+            --gray-light: #f5f5f5;
+            --gray: #e0e0e0;
+            --gray-dark: #666666; 
+            --black: #222222; 
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+            --radius: 12px;
+        }
+
+        /* Base Styles (Similar to terms.html) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--black);
+            background-color: white;
+            line-height: 1.7; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700; 
+            line-height: 1.3;
+            color: #111111; 
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+            font-size: 1.05rem; 
+            color: #333333; 
+        }
+
+        a {
+            color: #0066cc; 
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500; 
+        }
+
+        a:hover {
+            color: var(--pink-dark);
+            text-decoration: underline; 
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        /* Header (Similar to terms.html) */
+        header {
+            padding: 1.5rem 0;
+            background-color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .logo span {
+            color: var(--pink-dark);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--black);
+        }
+        
+        nav a.active {
+            color: var(--pink-dark);
+            font-weight: 700;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+
+        /* Page Header (Similar to terms.html) */
+        .page-header {
+            background-color: var(--pink-light);
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #555555; 
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* Privacy Policy Section (Similar to terms-section in terms.html) */
+        .privacy-section {
+            padding: 5rem 0;
+        }
+
+        .privacy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .privacy-date {
+            text-align: right;
+            color: var(--gray-dark);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .privacy-section h2 {
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .privacy-section h3 {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-section p,
+        .privacy-section ul,
+        .privacy-section ol {
+            margin-bottom: 1.5rem;
+        }
+
+        .privacy-section ul,
+        .privacy-section ol {
+            padding-left: 2rem;
+        }
+
+        .privacy-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .privacy-section strong {
+            font-weight: 600;
+        }
+
+        .privacy-intro {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info-privacy {
+            background-color: var(--cream);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 2rem 0;
+        }
+
+        /* Footer (Similar to terms.html) */
+        footer {
+            background-color: #f8f8f8; 
+            padding: 3rem 0;
+            border-top: 1px solid var(--gray);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        .footer-logo span {
+            color: var(--pink-dark);
+        }
+
+        .footer-about p {
+            color: #555555; 
+            font-size: 0.95rem;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #555555; 
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #555555;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--pink-dark);
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: #555555;
+            font-size: 0.9rem;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .legal-links a {
+            color: #555555;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles (Similar to terms.html) */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            .header-inner nav {
+                display: none;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .section {
+                padding: 3rem 0;
+            }
+            .page-header {
+                padding: 6rem 0 3rem;
+            }
+            .privacy-container {
+                padding: 2rem 1.5rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            .legal-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">Oh My <span>Mochi</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="cart.html"><i class="fas fa-shopping-bag"></i></a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p class="subtitle">Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.</p>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Section -->
+    <section class="privacy-section">
+        <div class="container">
+            <div class="privacy-container">
+                <div class="privacy-date">Last Updated: April 10, 2025</div>
+                
+                <div class="privacy-intro">
+                    <p>Oh My Mochi ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy describes how we collect, use, disclose, and safeguard your information when you visit our website [ohmymochi.com] (the "Site"), including any other media form, media channel, mobile website, or mobile application related or connected thereto. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.</p>
+                </div>
+                
+                <h2>1. Information We Collect</h2>
+                <p>We may collect information about you in a variety of ways. The information we may collect on the Site includes:</p>
+                <h3>Personal Data</h3>
+                <p>Personally identifiable information, such as your name, shipping address, email address, and telephone number, and demographic information, such as your age, gender, hometown, and interests, that you voluntarily give to us when you register with the Site or when you choose to participate in various activities related to the Site, such as online chat and message boards.</p>
+                <h3>Derivative Data</h3>
+                <p>Information our servers automatically collect when you access the Site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the Site.</p>
+                <h3>Financial Data</h3>
+                <p>Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) that we may collect when you purchase, order, return, or exchange products or services from the Site. We store only very limited, if any, financial information that we collect. Otherwise, all financial information is stored by our payment processor, Stripe, and you are encouraged to review their privacy policy and contact them directly for responses to your questions.</p>
+
+                <h2>2. Use of Your Information</h2>
+                <p>Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Site to:</p>
+                <ul>
+                    <li>Create and manage your account.</li>
+                    <li>Process your orders and payments.</li>
+                    <li>Email you regarding your account or order.</li>
+                    <li>Fulfill and manage purchases, orders, payments, and other transactions related to the Site.</li>
+                    <li>Notify you of updates to the Site.</li>
+                    <li>Offer new products, services, and/or recommendations to you.</li>
+                    <li>Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.</li>
+                    <li>Request feedback and contact you about your use of the Site.</li>
+                    <li>Resolve disputes and troubleshoot problems.</li>
+                    <li>Respond to product and customer service requests.</li>
+                </ul>
+
+                <h2>3. Disclosure of Your Information</h2>
+                <p>We may share information we have collected about you in certain situations. Your information may be disclosed as follows:</p>
+                <h3>By Law or to Protect Rights</h3>
+                <p>If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation.</p>
+                <h3>Third-Party Service Providers</h3>
+                <p>We may share your information with third parties that perform services for us or on our behalf, including payment processing (Stripe), data analysis, email delivery, hosting services, customer service, and marketing assistance.</p>
+                <h3>Business Transfers</h3>
+                <p>We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</p>
+
+                <h2>4. Security of Your Information</h2>
+                <p>We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse.</p>
+
+                <h2>5. Policy for Children</h2>
+                <p>We do not knowingly solicit information from or market to children under the age of 13. If you become aware of any data we have collected from children under age 13, please contact us using the contact information provided below.</p>
+
+                <h2>6. Your Privacy Rights (California Residents)</h2>
+                <p>California Civil Code Section 1798.83, also known as the "Shine The Light" law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us using the contact information provided below.</p>
+
+                <h2>7. Changes to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+                <h2>8. Contact Us</h2>
+                <p>If you have questions or comments about this Privacy Policy, please contact us at:</p>
+                <div class="contact-info-privacy">
+                    <p><strong>Oh My Mochi</strong></p>
+                    <p>Email: <a href="mailto:simplymochi.ca@gmail.com">simplymochi.ca@gmail.com</a></p>
+                    <p>Address: California, USA (Full address provided upon order confirmation for pickup)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Oh My <span>Mochi</span></div>
+                    <p>Handcrafted, small-batch mochi with authentic recipes inspired by Thailand. Available for pickup only.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="allergens.html">Allergen Information</a></li>
+                        <li><a href="privacy.html#">Business License</a></li>
+                        <li><a href="privacy.html#">CFO Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> simplymochi.ca@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> California, USA</p>
+                    <p><i class="fas fa-store"></i> Pickup Only - No Shipping</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2025 Oh My Mochi. All rights reserved.
+                </div>
+                <div class="legal-links">
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="allergens.html">Allergens</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const nav = document.querySelector('nav');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

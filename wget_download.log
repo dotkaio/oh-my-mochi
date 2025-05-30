@@ -1,0 +1,19 @@
+2025-05-29 19:23:54 URL:https://ohmymochi.com/ [18288/18288] -> "ohmymochi.com/index.html" [1]
+2025-05-29 19:23:55 URL:https://ohmymochi.com/index.html [18288/18288] -> "ohmymochi.com/index.html" [1]
+2025-05-29 19:23:55 URL:https://ohmymochi.com/shop.html [18765/18765] -> "ohmymochi.com/shop.html" [1]
+2025-05-29 19:23:56 URL:https://ohmymochi.com/about.html [23212/23212] -> "ohmymochi.com/about.html" [1]
+2025-05-29 19:23:56 URL:https://ohmymochi.com/reviews.html [17736/17736] -> "ohmymochi.com/reviews.html" [1]
+2025-05-29 19:23:57 URL:https://ohmymochi.com/contact.html [28437/28437] -> "ohmymochi.com/contact.html" [1]
+2025-05-29 19:23:57 URL:https://ohmymochi.com/cart.html [20739/20739] -> "ohmymochi.com/cart.html" [1]
+https://ohmymochi.com/api/placeholder/500/400:
+2025-05-29 19:23:58 ERROR 404: Not Found.
+2025-05-29 19:23:58 URL:https://ohmymochi.com/terms.html [29761/29761] -> "ohmymochi.com/terms.html" [1]
+2025-05-29 19:23:59 URL:https://ohmymochi.com/privacy.html [19111/19111] -> "ohmymochi.com/privacy.html" [1]
+2025-05-29 19:24:00 URL:https://ohmymochi.com/allergens.html [0/0] -> "ohmymochi.com/allergens.html" [1]
+https://ohmymochi.com/api/placeholder/300/250:
+2025-05-29 19:24:00 ERROR 404: Not Found.
+https://ohmymochi.com/api/placeholder/80/80:
+2025-05-29 19:24:01 ERROR 404: Not Found.
+FINISHED --2025-05-29 19:24:01--
+Total wall clock time: 6.8s
+Downloaded: 10 files, 190K in 0.03s (7.03 MB/s)

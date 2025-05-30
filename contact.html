@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Oh My Mochi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Properties */
+        :root {
+            --pink-light: #ffe5e8;
+            --pink: #ffccd1;
+            --pink-dark: #ff9fa9;
+            --cream: #fff9f0;
+            --gray-light: #f5f5f5;
+            --gray: #e0e0e0;
+            --gray-dark: #666666;
+            --black: #222222;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+            --radius: 12px;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--black);
+            background-color: white;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.3;
+            color: #111111;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+            font-size: 1.05rem;
+            color: #333333;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: var(--pink-dark);
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+        }
+
+        button, .button {
+            background-color: var(--pink-dark);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            display: inline-block;
+            text-align: center;
+        }
+
+        button:hover, .button:hover {
+            background-color: #ff8393;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #555555;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 0;
+            background-color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .logo span {
+            color: var(--pink-dark);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--black);
+        }
+
+        nav a.active {
+            color: var(--pink-dark);
+            font-weight: 700;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: var(--pink-light);
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info {
+            background-color: var(--cream);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .contact-info h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--pink-dark);
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--pink-dark);
+            margin-right: 1rem;
+            flex-shrink: 0;
+            width: 24px;
+            text-align: center;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-text h4 {
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-text p {
+            margin-bottom: 0;
+            color: #555555;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--pink-light);
+            color: var(--pink-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--pink-dark);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--gray);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--pink);
+            box-shadow: 0 0 0 2px rgba(255, 159, 169, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            justify-self: start;
+            padding: 12px 32px;
+        }
+
+        .pickup-notice {
+            background-color: var(--pink-light);
+            padding: 15px;
+            border-radius: var(--radius);
+            margin: 2rem 0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .pickup-notice i {
+            margin-right: 10px;
+            color: var(--pink-dark);
+            font-size: 1.2rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+            background-color: var(--gray-light);
+        }
+
+        .faq-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--black);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: var(--pink-light);
+        }
+
+        .faq-question i {
+            font-size: 1.2rem;
+            color: var(--pink-dark);
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 5rem 0;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 2rem;
+            background-color: var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-dark);
+            font-size: 1.2rem;
+            border: 1px solid var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f8f8f8;
+            padding: 3rem 0;
+            border-top: 1px solid var(--gray);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .footer-logo span {
+            color: var(--pink-dark);
+        }
+
+        .footer-about p {
+            color: #555555;
+            font-size: 0.95rem;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #555555;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #555555;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--pink-dark);
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: #555555;
+            font-size: 0.9rem;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .legal-links a {
+            color: #555555;
+            font-size: 0.9rem;
+        }
+
+        /* Success Message */
+        .success-message {
+            background-color: #e8f5e9;
+            border: 1px solid #66bb6a;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-message i {
+            font-size: 2rem;
+            color: #43a047;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .contact-info {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .header-inner nav {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .page-header {
+                padding: 6rem 0 3rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .legal-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">Oh My <span>Mochi</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
+                        <li><a href="cart.html"><i class="fas fa-shopping-bag"></i></a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p class="subtitle">Have questions or feedback? We'd love to hear from you. Get in touch with our team.</p>
+        </div>
+    </section>
+
+    <!-- Success Message (Initially Hidden) -->
+    <div class="container">
+        <div id="success-message" class="success-message text-center">
+            <i class="fas fa-check-circle"></i>
+            <h3>Message Sent Successfully!</h3>
+            <p>Thank you for contacting us. We'll get back to you as soon as possible.</p>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-form-container">
+                    <h2>Send Us a Message</h2>
+                    <p>We'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.</p>
+                    
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-textarea" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="button submit-btn">Send Message</button>
+                    </form>
+                    
+                    <div class="pickup-notice">
+                        <i class="fas fa-store"></i> Remember: Oh My Mochi is a pickup-only business. We do not offer shipping at this time.
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p><a href="mailto:simplymochi.ca@gmail.com">simplymochi.ca@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>California, USA</p>
+                            <p>(Pickup location details provided after order confirmation)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Business Hours</h4>
+                            <p>Tuesday - Saturday: 11:00 AM - 6:00 PM</p>
+                            <p>Sunday - Monday: Closed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Pickup Hours</h4>
+                            <p>Tuesday - Saturday: 12:00 PM - 5:00 PM</p>
+                            <p>(Same-day pickup orders must be placed at least 3 hours in advance)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="contact.html#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="contact.html#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="contact.html#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-title">
+                <h2>Frequently Asked Questions</h2>
+                <p class="subtitle">Find answers to the most common questions about Oh My Mochi.</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer delivery or shipping?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, we are currently a pickup-only business. We do not offer delivery or shipping services at this time. Orders can be placed online and picked up at our location during pickup hours.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How far in advance should I place my order?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For same-day pickup, orders must be placed at least 3 hours in advance. For larger orders (party boxes or custom orders), we recommend ordering 24-48 hours in advance to ensure availability.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long do mochi stay fresh?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our mochi are best enjoyed within 24-48 hours of pickup for optimal freshness and texture. They can be stored in an airtight container in the refrigerator for up to 3 days. We do not recommend freezing our mochi.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer custom orders or catering?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer custom orders and catering for special events. Please contact us directly at simplymochi.ca@gmail.com with details about your event, desired flavors, and quantity at least 7 days in advance.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards, Apple Pay, and Google Pay through our secure online checkout system powered by Stripe. We do not accept cash payments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="text-center">Our Location</h2>
+            <div class="map-container">
+                <p>Map will be displayed here. Location details provided after order confirmation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Oh My <span>Mochi</span></div>
+                    <p>Handcrafted, small-batch mochi with authentic recipes inspired by Thailand. Available for pickup only.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="allergens.html">Allergen Information</a></li>
+                        <li><a href="contact.html#">Business License</a></li>
+                        <li><a href="contact.html#">CFO Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> simplymochi.ca@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> California, USA</p>
+                    <p><i class="fas fa-store"></i> Pickup Only - No Shipping</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2025 Oh My Mochi. All rights reserved.
+                </div>
+                <div class="legal-links">
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="allergens.html">Allergens</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const nav = document.querySelector('nav');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+            
+            // FAQ accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', function() {
+                    // Toggle current item
+                    item.classList.toggle('active');
+                    
+                    // Optional: Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // In a real implementation, you would send the form data to a server
+                    // For demo purposes, we'll just show the success message
+                    contactForm.reset();
+                    successMessage.classList.add('active');
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(function() {
+                        successMessage.classList.remove('active');
+                    }, 5000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

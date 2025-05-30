@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookies & Cream Mochi | Oh My Mochi</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Custom Properties */
+      :root {
+        --pink-light: #ffe5e8;
+        --pink: #ffccd1;
+        --pink-dark: #ff9fa9;
+        --cream: #fff9f0;
+        --gray-light: #f5f5f5;
+        --gray: #e0e0e0;
+        --gray-dark: #888888;
+        --black: #333333;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        --transition: all 0.3s ease;
+        --radius: 12px;
+      }
+
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        color: var(--black);
+        background-color: white;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h2 {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.2rem;
+        font-weight: 400;
+      }
+
+      a {
+        color: var(--black);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--pink-dark);
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--radius);
+      }
+
+      button,
+      .button {
+        background-color: var(--pink);
+        color: var(--black);
+        border: none;
+        padding: 12px 24px;
+        border-radius: var(--radius);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 1rem;
+        display: inline-block;
+        text-align: center;
+      }
+
+      button:hover,
+      .button:hover {
+        background-color: var(--pink-dark);
+        transform: translateY(-2px);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      /* Header */
+      header {
+        padding: 1.5rem 0;
+        background-color: white;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--shadow);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--black);
+      }
+
+      .logo span {
+        color: var(--pink-dark);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav li {
+        margin-left: 2rem;
+      }
+
+      nav a {
+        font-weight: 500;
+      }
+
+      nav a.active {
+        color: var(--pink-dark);
+        font-weight: 600;
+      }
+
+      /* Breadcrumb */
+      .breadcrumb {
+        padding: 6rem 0 2rem;
+        background-color: var(--gray-light);
+      }
+
+      .breadcrumb-nav {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+      }
+
+      .breadcrumb-nav a {
+        color: var(--gray-dark);
+      }
+
+      .breadcrumb-nav span {
+        margin: 0 0.5rem;
+        color: var(--gray-dark);
+      }
+
+      /* Product Detail */
+      .product-detail {
+        padding: 3rem 0;
+      }
+
+      .product-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .product-gallery {
+        position: sticky;
+        top: 120px;
+      }
+
+      .main-image {
+        width: 100%;
+        height: 500px;
+        background: linear-gradient(135deg, #4a4a4a, #666666);
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        font-size: 4rem;
+        color: white;
+      }
+
+      .product-info h1 {
+        font-size: 2.5rem;
+        color: var(--black);
+        margin-bottom: 1rem;
+      }
+
+      .product-description {
+        color: var(--gray-dark);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        line-height: 1.7;
+      }
+
+      .product-features {
+        background-color: var(--cream);
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        margin-bottom: 2rem;
+      }
+
+      .features-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .features-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .features-list i {
+        color: var(--pink-dark);
+        margin-right: 10px;
+        width: 20px;
+      }
+
+      .box-options {
+        margin: 2rem 0;
+      }
+
+      .box-options-title {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .box-selector {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .box-option {
+        border: 2px solid var(--gray);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        transition: var(--transition);
+        background-color: white;
+      }
+
+      .box-option:hover,
+      .box-option.selected {
+        border-color: var(--pink-dark);
+        background-color: var(--pink-light);
+      }
+
+      .box-name {
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+      }
+
+      .box-details {
+        font-size: 0.9rem;
+        color: var(--gray-dark);
+        margin-bottom: 8px;
+      }
+
+      .box-price {
+        font-weight: 600;
+        color: var(--pink-dark);
+        font-size: 1.2rem;
+      }
+
+      .purchase-section {
+        background-color: var(--gray-light);
+        padding: 2rem;
+        border-radius: var(--radius);
+        margin-top: 2rem;
+      }
+
+      .current-price {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--pink-dark);
+        margin-bottom: 1.5rem;
+      }
+
+      .quantity-selector {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .quantity-label {
+        margin-right: 1rem;
+        font-weight: 500;
+      }
+
+      .quantity-controls {
+        display: flex;
+        align-items: center;
+        border: 2px solid var(--gray);
+        border-radius: var(--radius);
+        background-color: white;
+      }
+
+      .quantity-btn {
+        background: none;
+        border: none;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: var(--black);
+      }
+
+      .quantity-input {
+        border: none;
+        width: 60px;
+        height: 40px;
+        text-align: center;
+        font-size: 1.1rem;
+        background: none;
+      }
+
+      .add-to-cart {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .pickup-notice {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--pink-light);
+        padding: 15px;
+        border-radius: var(--radius);
+        font-weight: 500;
+      }
+
+      .pickup-notice i {
+        margin-right: 10px;
+        color: var(--pink-dark);
+      }
+
+      /* Ingredients Section */
+      .ingredients-section {
+        padding: 3rem 0;
+        background-color: var(--cream);
+      }
+
+      .ingredients-container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .ingredients-list {
+        background-color: white;
+        padding: 2rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-top: 2rem;
+      }
+
+      .allergen-warning {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+        padding: 1rem;
+        border-radius: var(--radius);
+        margin-top: 1.5rem;
+        font-weight: 500;
+      }
+
+      /* Footer */
+      footer {
+        background-color: white;
+        padding: 3rem 0;
+        border-top: 1px solid var(--gray);
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .footer-about p {
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .product-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .product-gallery {
+          position: static;
+        }
+
+        .main-image {
+          height: 300px;
+        }
+
+        .product-info h1 {
+          font-size: 2rem;
+        }
+
+        .box-selector {
+          grid-template-columns: 1fr;
+        }
+
+        .quantity-selector {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .quantity-label {
+          margin-bottom: 0.5rem;
+          margin-right: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-inner">
+          <div class="logo">
+            Oh My <span>Mochi</span>
+          </div>
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+      <div class="container">
+        <nav class="breadcrumb-nav">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="shop.html">Shop</a>
+          <span>/</span>
+          <span>Cookies & Cream</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="product-detail">
+      <div class="container">
+        <div class="product-container">
+          <!-- Product Gallery -->
+          <div class="product-gallery">
+            <div class="main-image">
+              <i class="fas fa-cookie-bite"></i>
+            </div>
+          </div>
+
+          <!-- Product Info -->
+          <div class="product-info">
+            <h1>Cookies & Cream Mochi</h1>
+            
+            <p class="product-description">
+              Experience the perfect marriage of classic cookies and cream in our irresistible mochi creation. Rich vanilla ice cream is generously loaded with chunks of chocolate sandwich cookies, then lovingly wrapped in our signature soft mochi shell. Each bite delivers the nostalgic taste of your favorite childhood cookie with a sophisticated Japanese twist that will have you coming back for more.
+            </p>
+
+            <div class="product-features">
+              <h3>What Makes It Special</h3>
+              <ul class="features-list">
+                <li><i class="fas fa-cookie"></i> Real chocolate sandwich cookie pieces</li>
+                <li><i class="fas fa-ice-cream"></i> Premium vanilla bean ice cream</li>
+                <li><i class="fas fa-heart"></i> Soft, pillowy mochi texture</li>
+                <li><i class="fas fa-clock"></i> Best enjoyed within 2 hours of pickup</li>
+                <li><i class="fas fa-star"></i> A customer favorite since day one</li>
+              </ul>
+            </div>
+
+            <!-- Box Options -->
+            <div class="box-options">
+              <div class="box-options-title">Choose Your Box Size:</div>
+              <div class="box-selector">
+                <div class="box-option selected" data-price="9.99" data-size="small">
+                  <div class="box-name">Small Box</div>
+                  <div class="box-details">4 pieces</div>
+                  <div class="box-price">$9.99</div>
+                </div>
+                <div class="box-option" data-price="17.99" data-size="medium">
+                  <div class="box-name">Medium Box</div>
+                  <div class="box-details">8 pieces</div>
+                  <div class="box-price">$17.99</div>
+                </div>
+                <div class="box-option" data-price="24.99" data-size="large">
+                  <div class="box-name">Large Box</div>
+                  <div class="box-details">12 pieces</div>
+                  <div class="box-price">$24.99</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Purchase Section -->
+            <div class="purchase-section">
+              <div class="current-price" id="current-price">$9.99</div>
+              
+              <div class="quantity-selector">
+                <span class="quantity-label">Quantity:</span>
+                <div class="quantity-controls">
+                  <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                  <input type="number" class="quantity-input" id="quantity" value="1" min="1">
+                  <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                </div>
+              </div>
+
+              <button class="add-to-cart" onclick="addToCart()">
+                Add to Cart
+              </button>
+
+              <div class="pickup-notice">
+                <i class="fas fa-store"></i>
+                Pickup only - Ready in 2 hours
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ingredients Section -->
+    <section class="ingredients-section">
+      <div class="container">
+        <div class="ingredients-container">
+          <h2>Ingredients & Allergens</h2>
+          <p>We believe in transparency about what goes into our mochi.</p>
+          
+          <div class="ingredients-list">
+            <h3>Ingredients</h3>
+            <p><strong>Mochi Shell:</strong> Glutinous rice flour, sugar, water, cornstarch</p>
+            <p><strong>Ice Cream Filling:</strong> Milk, cream, sugar, egg yolks, vanilla extract, chocolate sandwich cookies (enriched flour, sugar, palm oil, cocoa powder, high fructose corn syrup, leavening agents, salt, soy lecithin, vanillin)</p>
+            
+            <div class="allergen-warning">
+              <strong>Allergen Warning:</strong> Contains dairy, eggs, wheat, soy. Made in a facility that also processes nuts.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-about">
+            <div class="footer-logo">Oh My <span style="color: var(--pink-dark);">Mochi</span></div>
+            <p>Premium Thai-inspired mochi ice cream, handcrafted daily with love and the finest ingredients.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Customer Care</h4>
+            <ul>
+              <li><a href="allergens.html">Allergen Info</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Info</h4>
+            <p><i class="fas fa-phone"></i> (555) 123-MOCHI</p>
+            <p><i class="fas fa-envelope"></i> hello@ohmymochi.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Sweet Street, Dessert District</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      let selectedSize = 'small';
+      let selectedPrice = 9.99;
+
+      // Box selection
+      document.querySelectorAll('.box-option').forEach(option => {
+        option.addEventListener('click', function() {
+          // Remove selected class from all options
+          document.querySelectorAll('.box-option').forEach(opt => opt.classList.remove('selected'));
+          
+          // Add selected class to clicked option
+          this.classList.add('selected');
+          
+          // Update price and size
+          selectedPrice = parseFloat(this.dataset.price);
+          selectedSize = this.dataset.size;
+          
+          // Update price display
+          document.getElementById('current-price').textContent = `$${selectedPrice.toFixed(2)}`;
+          
+          // Reset quantity to 1
+          document.getElementById('quantity').value = 1;
+        });
+      });
+
+      function increaseQuantity() {
+        const quantityInput = document.getElementById('quantity');
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+      }
+
+      function decreaseQuantity() {
+        const quantityInput = document.getElementById('quantity');
+        if (parseInt(quantityInput.value) > 1) {
+          quantityInput.value = parseInt(quantityInput.value) - 1;
+        }
+      }
+
+      function addToCart() {
+        const quantity = parseInt(document.getElementById('quantity').value);
+        const total = selectedPrice * quantity;
+        
+        // Here you would typically add to cart functionality
+        alert(`Added ${quantity} x Cookies & Cream Mochi (${selectedSize} box) to cart!\nTotal: $${total.toFixed(2)}`);
+        
+        // In a real application, you would:
+        // 1. Store cart data in localStorage or send to server
+        // 2. Update cart icon with item count
+        // 3. Show a success message or animation
+      }
+
+      // Quantity input validation
+      document.getElementById('quantity').addEventListener('change', function() {
+        if (this.value < 1) this.value = 1;
+      });
+    </script>
+  </body>
+</html>

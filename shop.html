@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop | Oh My Mochi</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Custom Properties */
+      :root {
+        --pink-light: #ffe5e8;
+        --pink: #ffccd1;
+        --pink-dark: #ff9fa9;
+        --cream: #fff9f0;
+        --gray-light: #f5f5f5;
+        --gray: #e0e0e0;
+        --gray-dark: #888888;
+        --black: #333333;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        --transition: all 0.3s ease;
+        --radius: 12px;
+      }
+
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        color: var(--black);
+        background-color: white;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h2 {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.2rem;
+        font-weight: 400;
+      }
+
+      a {
+        color: var(--black);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--pink-dark);
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--radius);
+      }
+
+      button,
+      .button {
+        background-color: var(--pink);
+        color: var(--black);
+        border: none;
+        padding: 12px 24px;
+        border-radius: var(--radius);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 1rem;
+        display: inline-block;
+        text-align: center;
+      }
+
+      button:hover,
+      .button:hover {
+        background-color: var(--pink-dark);
+        transform: translateY(-2px);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .subtitle {
+        color: var(--gray-dark);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Header */
+      header {
+        padding: 1.5rem 0;
+        background-color: white;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--shadow);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--black);
+      }
+
+      .logo span {
+        color: var(--pink-dark);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav li {
+        margin-left: 2rem;
+      }
+
+      nav a {
+        font-weight: 500;
+      }
+
+      nav a.active {
+        color: var(--pink-dark);
+        font-weight: 600;
+      }
+
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--black);
+      }
+
+      /* Page Header */
+      .page-header {
+        background-color: var(--pink-light);
+        padding: 8rem 0 4rem;
+        text-align: center;
+      }
+
+      /* Shop Section */
+      .shop-section {
+        padding: 5rem 0;
+      }
+
+      .pickup-notice {
+        background-color: var(--pink-light);
+        padding: 15px;
+        border-radius: var(--radius);
+        margin-bottom: 3rem;
+        text-align: center;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pickup-notice i {
+        margin-right: 10px;
+        color: var(--pink-dark);
+        font-size: 1.2rem;
+      }
+
+      .products-grid {
+        display: flex;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .product-card {
+        background-color: var(--gray-light);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .product-image {
+        height: 450px;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--pink-light);
+      }
+
+      .product-info {
+        padding: 1.5rem;
+      }
+
+      .product-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .product-description {
+        color: var(--gray-dark);
+        margin-bottom: 1rem;
+      }
+
+      .box-options {
+        margin: 1.5rem 0;
+      }
+
+      .box-options-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .box-selector {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .box-option {
+        border: 2px solid var(--gray);
+        border-radius: var(--radius);
+        padding: 12px;
+        text-align: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .box-option:hover,
+      .box-option.selected {
+        border-color: var(--pink-dark);
+        background-color: var(--pink-light);
+      }
+
+      .box-name {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .box-details {
+        font-size: 0.9rem;
+        color: var(--gray-dark);
+        margin-bottom: 4px;
+      }
+
+      .box-price {
+        font-weight: 600;
+        color: var(--pink-dark);
+      }
+
+      .price {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .add-to-cart {
+        width: 100%;
+      }
+
+      /* Footer */
+      footer {
+        background-color: white;
+        padding: 3rem 0;
+        border-top: 1px solid var(--gray);
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .footer-about p {
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      .footer-links h4 {
+        margin-bottom: 1rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-contact p {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      .footer-contact i {
+        margin-right: 10px;
+        color: var(--pink-dark);
+      }
+
+      .footer-bottom {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--gray);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .copyright {
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      .legal-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .legal-links a {
+        color: var(--gray-dark);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          font-size: 1.75rem;
+        }
+
+        .header-inner nav {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+
+        .section {
+          padding: 3rem 0;
+        }
+
+        .page-header {
+          padding: 6rem 0 3rem;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        .legal-links {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-inner">
+          <a href="index.html" class="logo">Oh My <span>Mochi</span></a>
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html" class="active">Shop</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li>
+                <a href="cart.html"><i class="fas fa-shopping-bag"></i></a>
+              </li>
+            </ul>
+          </nav>
+          <button class="mobile-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Shop Our Mochi</h1>
+        <p class="subtitle">
+          Choose from our variety of handcrafted Thai-inspired mochi desserts.
+        </p>
+      </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="shop-section">
+      <div class="container">
+        <div class="pickup-notice">
+          <i class="fas fa-store"></i> Pickup Only - We do not offer shipping at
+          this time
+        </div>
+
+        <div class="products-grid">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="images/Strawberry Miruku 1.heic"
+                alt="Strawberry Miruku Mochi"
+              />
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Strawberry Miruku</h3>
+              <p class="product-description">
+                Sweet strawberry mochi with a creamy milk filling. A perfect
+                balance of fruity and creamy flavors.
+              </p>
+              
+              <div class="box-options">
+                <div class="box-options-title">Choose Your Box Size:</div>
+                <div class="box-selector">
+                  <div class="box-option selected" data-price="8.99" data-size="small" data-qty="4">
+                    <div class="box-name">Small Box</div>
+                    <div class="box-details">4 pieces</div>
+                    <div class="box-price">$8.99</div>
+                  </div>
+                  <div class="box-option" data-price="16.99" data-size="medium" data-qty="8">
+                    <div class="box-name">Medium Box</div>
+                    <div class="box-details">8 pieces</div>
+                    <div class="box-price">$16.99</div>
+                  </div>
+                  <div class="box-option" data-price="24.99" data-size="party" data-qty="12">
+                    <div class="box-name">Party Box</div>
+                    <div class="box-details">12 pieces</div>
+                    <div class="box-price">$24.99</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="price">$8.99</div>
+              <button class="add-to-cart button" data-product="Strawberry Miruku" data-price="8.99" data-qty="4">
+                Add to Cart
+              </button>
+              <p style="text-align: center; margin-top: 1rem;">
+                <a href="strawberry-miruku.html" style="color: var(--pink-dark); font-weight: 500;">View Full Details →</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="images/Cookies & Cream 1.heic"
+                alt="Cookies & Cream Mochi"
+              />
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Cookies & Cream</h3>
+              <p class="product-description">
+                Rich cookies and cream mochi with cookie crumbles. A delightful
+                twist on a classic favorite.
+              </p>
+              
+              <div class="box-options">
+                <div class="box-options-title">Choose Your Box Size:</div>
+                <div class="box-selector">
+                  <div class="box-option selected" data-price="9.99" data-size="small" data-qty="4">
+                    <div class="box-name">Small Box</div>
+                    <div class="box-details">4 pieces</div>
+                    <div class="box-price">$9.99</div>
+                  </div>
+                  <div class="box-option" data-price="18.99" data-size="medium" data-qty="8">
+                    <div class="box-name">Medium Box</div>
+                    <div class="box-details">8 pieces</div>
+                    <div class="box-price">$18.99</div>
+                    </div>
+                  <div class="box-option" data-price="26.99" data-size="party" data-qty="12">
+                    <div class="box-name">Party Box</div>
+                    <div class="box-details">12 pieces</div>
+                    <div class="box-price">$26.99</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="price">$9.99</div>
+              <button class="add-to-cart button" data-product="Cookies & Cream" data-price="9.99" data-qty="4">
+                Add to Cart
+              </button>
+              <p style="text-align: center; margin-top: 1rem;">
+                <a href="cookies-cream.html" style="color: var(--pink-dark); font-weight: 500;">View Full Details →</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-about">
+            <div class="footer-logo">Oh My <span>Mochi</span></div>
+            <p>
+              Handcrafted, small-batch mochi with authentic recipes inspired by
+              Thailand. Available for pickup only.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Information</h4>
+            <ul>
+              <li><a href="terms.html">Terms of Service</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="allergens.html">Allergen Information</a></li>
+              <li><a href="shop.html#">Business License</a></li>
+              <li><a href="shop.html#">CFO Compliance</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><i class="fas fa-envelope"></i> simplymochi.ca@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> California, USA</p>
+            <p><i class="fas fa-store"></i> Pickup Only - No Shipping</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="copyright">© 2025 Oh My Mochi. All rights reserved.</div>
+          <div class="legal-links">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="allergens.html">Allergens</a>
+          </div>
+        </div>
+      </div>
+    </footer>    <!-- JavaScript for box selection and cart functionality -->
+    <script>
+      // Box selection and cart functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const boxOptions = document.querySelectorAll(".box-option");
+
+        boxOptions.forEach((option) => {
+          option.addEventListener("click", function () {
+            // Get product card
+            const productCard = this.closest(".product-card");
+
+            // Remove selected class from all options in this product
+            productCard.querySelectorAll(".box-option").forEach((opt) => {
+              opt.classList.remove("selected");
+            });
+
+            // Add selected class to clicked option
+            this.classList.add("selected");
+
+            // Update price display
+            const price = this.getAttribute("data-price");
+            productCard.querySelector(".price").textContent = `$${price}`;
+
+            // Update add to cart button
+            const addToCartBtn = productCard.querySelector(".add-to-cart");
+            const productName =
+              productCard.querySelector(".product-title").textContent;
+            const size = this.getAttribute("data-size");
+            const qty = this.getAttribute("data-qty");
+
+            // Update the button attributes for cart functionality
+            addToCartBtn.setAttribute("data-product", productName);
+            addToCartBtn.setAttribute("data-price", price);
+            addToCartBtn.setAttribute("data-size", size);
+            addToCartBtn.setAttribute("data-qty", qty);
+          });
+        });
+
+        // Add to cart functionality
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+        
+        addToCartButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const productCard = this.closest(".product-card");
+            const selectedOption = productCard.querySelector(".box-option.selected");
+            
+            if (!selectedOption) {
+              alert("Please select a box size first!");
+              return;
+            }
+
+            const productName = productCard.querySelector(".product-title").textContent;
+            const price = selectedOption.getAttribute("data-price");
+            const size = selectedOption.getAttribute("data-size");
+            const qty = selectedOption.getAttribute("data-qty");
+            
+            // Create unique ID for the cart item
+            const itemId = `${productName.toLowerCase().replace(/\s+/g, '-')}-${size}-${Date.now()}`;
+            
+            // Get existing cart from localStorage
+            let cart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+            
+            // Create cart item object
+            const cartItem = {
+              id: itemId,
+              name: productName,
+              size: size.charAt(0).toUpperCase() + size.slice(1),
+              price: parseFloat(price),
+              qty: parseInt(qty), // Ensure qty is stored as a number
+              quantity: 1,
+              image: productCard.querySelector(".product-image img").src || "images/placeholder.jpg"
+            };
+            
+            // Check if same item already exists in cart
+            const existingItemIndex = cart.findIndex(item => 
+              item.name === productName && 
+              item.size === cartItem.size
+            );
+            
+            if (existingItemIndex > -1) {
+              // If item exists, increase quantity
+              cart[existingItemIndex].quantity += 1;
+            } else {
+              // If new item, add to cart
+              cart.push(cartItem);
+            }
+            
+            // Save updated cart to localStorage
+            localStorage.setItem("shoppingCart", JSON.stringify(cart));
+            
+            // Show success message
+            showAddToCartMessage(productName, cartItem.size);
+            
+            // Update button text temporarily
+            const originalText = this.textContent;
+            this.textContent = "Added!";
+            this.style.backgroundColor = "#4CAF50";
+            
+            setTimeout(() => {
+              this.textContent = originalText;
+              this.style.backgroundColor = "";
+            }, 1500);
+          });
+        });
+
+        // Function to show add to cart message
+        function showAddToCartMessage(productName, size) {
+          // Create message element
+          const message = document.createElement("div");
+          message.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+          `;
+          message.innerHTML = `
+            <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+            <strong>${productName}</strong> (${size}) added to cart!
+          `;
+          
+          document.body.appendChild(message);
+          
+          // Animate in
+          setTimeout(() => {
+            message.style.transform = "translateX(0)";
+          }, 100);
+          
+          // Remove after 3 seconds
+          setTimeout(() => {
+            message.style.transform = "translateX(100%)";
+            setTimeout(() => {
+              document.body.removeChild(message);
+            }, 300);
+          }, 3000);
+        }
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector(".mobile-toggle");
+        const nav = document.querySelector("nav");
+
+        if (mobileToggle) {
+          mobileToggle.addEventListener("click", function () {
+            nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
