@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | Oh My Mochi</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      padding: 40px 20px;
+    }
+    #checkout {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="checkout"></div>
+  <script>
+    async function initCheckout() {
+      const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+      if (cart.length === 0) {
+        alert('Your cart is empty.');
+        window.location.href = 'shop.html';
+        return;
+      }
+      const configRes = await fetch('/config');
+      const { publishableKey } = await configRes.json();
+      const stripe = Stripe(publishableKey);
+      const sessionRes = await fetch('/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cart })
+      });
+      const { clientSecret } = await sessionRes.json();
+      const elements = stripe.elements({ clientSecret });
+      const checkoutElement = elements.create('checkout');
+      checkoutElement.mount('#checkout');
+    }
+    initCheckout();
+  </script>
+</body>
+</html>
