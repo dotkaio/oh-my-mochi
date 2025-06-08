@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY || 'sk_test_51QkXUFRpoE6YKPdJR6Jvk2QGpjxuhbwJlVHKw6Xx1GgNdQm6PG9IV3adtHALOZFFQB0vjJWdpSVlRqEg30s1MVWB00FxjfJxBi'; // IMPORTANT: Use environment variable in production!
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY ||
+  'sk_test_51QkXUFRpoE6YKPdJR6Jvk2QGpjxuhbwJlVHKw6Xx1GgNdQm6PG9IV3adtHALOZFFQB0vjJWdpSVlRqEg30s1MVWB00FxjfJxBi'; // IMPORTANT: Use environment variable in production!
+const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY || 'pk_test_placeholder';
 const stripe = require('stripe')(stripeSecretKey);
 
 app.use(express.json());
@@ -8,15 +10,19 @@ app.use(express.static(__dirname)); // Serve static files from the root director
 
 const YOUR_DOMAIN = process.env.YOUR_DOMAIN || 'http://localhost:4242'; // IMPORTANT: Use environment variable in production!
 
+app.get('/config', (req, res) => {
+  res.json({ publishableKey: stripePublishableKey });
+});
+
 app.post('/create-checkout-session', async (req, res) => {
   try {
-    const { line_items } = req.body;
+    const { cart } = req.body;
 
-    if (!line_items || !Array.isArray(line_items) || line_items.length === 0) {
-      return res.status(400).json({ error: 'Invalid line items provided' });
+    if (!cart || !Array.isArray(cart) || cart.length === 0) {
+      return res.status(400).json({ error: 'Invalid cart provided' });
     }
 
-    const lineItems = line_items.map(item => {
+    const lineItems = cart.map(item => {
       const unitAmount = Math.round(parseFloat(item.price) * 100); // Stripe expects amount in cents
       if (isNaN(unitAmount) || unitAmount <= 0) {
           console.error('Invalid unit amount for item:', item);
@@ -55,10 +61,11 @@ app.post('/create-checkout-session', async (req, res) => {
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${YOUR_DOMAIN}/order-success.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${YOUR_DOMAIN}/cart.html`, // Or a dedicated order-cancel.html
+      ui_mode: 'embedded',
+      return_url: `${YOUR_DOMAIN}/order-success.html?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${YOUR_DOMAIN}/cart.html`,
     });
-    res.json({ url: session.url });
+    res.json({ clientSecret: session.client_secret });
   } catch (error) {
     console.error('Error creating Stripe session:', error);
     res.status(500).json({ error: 'Failed to create payment session' });
