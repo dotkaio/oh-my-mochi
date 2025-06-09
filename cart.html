@@ -760,6 +760,29 @@
               alert("Your cart is empty. Please add items before checking out.");
               return;
             }
+
+            try {
+              const response = await fetch('/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ line_items: cart }), // Send the cart data
+              });
+
+              if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to create checkout session');
+              }
+
+              const session = await response.json();
+              // Redirect to Stripe Checkout
+              window.location.href = session.url;
+            } catch (error) {
+              console.error("Checkout error:", error);
+              alert("Could not proceed to checkout: " + error.message);
+            }
+
             window.location.href = "checkout.html";
           });
         }
