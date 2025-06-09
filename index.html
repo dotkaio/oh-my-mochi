@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="responsive.css" />
     <style>
       /* Custom Properties */
       :root {
@@ -175,6 +176,17 @@
       nav a.active {
         color: var(--pink-dark);
         font-weight: 600;
+      }
+
+      .nav-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: var(--black);
       }
 
       .mobile-toggle {
@@ -445,8 +457,25 @@
           font-size: 1.75rem;
         }
 
-        .header-inner nav {
-          display: none;
+        nav {
+          position: fixed;
+          inset: 0;
+          background: white;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          transform: translateY(-100%);
+          transition: transform 0.3s ease;
+          z-index: 200;
+        }
+
+        nav.open {
+          transform: translateY(0);
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 2rem;
         }
 
         .mobile-toggle {
@@ -485,6 +514,7 @@
         <div class="header-inner">
           <a href="index.html" class="logo">Oh My <span>Mochi</span></a>
           <nav>
+            <button class="nav-close">&times;</button>
             <ul>
               <li><a href="index.html" class="active">Home</a></li>
               <li><a href="shop.html">Shop</a></li>
@@ -508,7 +538,6 @@
       <div class="container">
         <div class="hero-inner">
           <div class="hero-content">
-            <div class="tagline">Handcrafted with Love</div>
             <h1>Experience the Delightful World of Premium Mochi</h1>
             <p class="subtitle">
               Indulge in our handcrafted, small-batch mochi desserts with
@@ -704,7 +733,6 @@
         </div>
       </div>
     </footer>
-
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const mobileToggle = document.querySelector('.mobile-toggle');
@@ -713,6 +741,17 @@
         if (mobileToggle) {
           mobileToggle.addEventListener('click', function () {
             nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        const navClose = document.querySelector('.nav-close');
+
+        if (mobileToggle && nav) {
+          mobileToggle.addEventListener('click', function () {
+            nav.classList.add('open');
+          });
+        }
+
+        if (navClose && nav) {
+          navClose.addEventListener('click', function () {
+            nav.classList.remove('open');
           });
         }
       });
