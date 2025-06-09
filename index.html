@@ -465,7 +465,7 @@
           align-items: center;
           justify-content: center;
           transform: translateY(-100%);
-          transition: transform 0.3s ease;
+          transition: transform 0.2s ease;
           z-index: 200;
         }
 
@@ -737,10 +737,6 @@
       document.addEventListener('DOMContentLoaded', function () {
         const mobileToggle = document.querySelector('.mobile-toggle');
         const nav = document.querySelector('nav');
-
-        if (mobileToggle) {
-          mobileToggle.addEventListener('click', function () {
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
         const navClose = document.querySelector('.nav-close');
 
         if (mobileToggle && nav) {
