@@ -1,0 +1,10 @@
+/* Global responsive styles */
+@media (max-width: 600px) {
+  [class*="grid"],
+  .footer-container,
+  .info-cards,
+  .cart-items {
+    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
+  }
+}
