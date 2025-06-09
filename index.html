@@ -250,7 +250,7 @@
       }
 
       .products-grid {
-        display: flex;
+        display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 2rem;
         margin-top: 3rem;
@@ -489,6 +489,10 @@
 
         .section {
           padding: 3rem 0;
+        }
+
+        .products-grid {
+          grid-template-columns: 1fr;
         }
 
         .footer-bottom {
@@ -733,6 +737,10 @@
       document.addEventListener('DOMContentLoaded', function () {
         const mobileToggle = document.querySelector('.mobile-toggle');
         const nav = document.querySelector('nav');
+
+        if (mobileToggle) {
+          mobileToggle.addEventListener('click', function () {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
         const navClose = document.querySelector('.nav-close');
 
         if (mobileToggle && nav) {
