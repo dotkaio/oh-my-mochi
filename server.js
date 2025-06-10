@@ -1,8 +1,16 @@
 const express = require('express');
+require('dotenv').config();
 const app = express();
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY ||
-  'sk_test_51QkXUFRpoE6YKPdJR6Jvk2QGpjxuhbwJlVHKw6Xx1GgNdQm6PG9IV3adtHALOZFFQB0vjJWdpSVlRqEg30s1MVWB00FxjfJxBi'; // IMPORTANT: Use environment variable in production!
-const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY || 'pk_test_placeholder';
+
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+
+if (process.env.NODE_ENV === 'production') {
+  if (!stripeSecretKey || !stripePublishableKey) {
+    throw new Error('Stripe keys are required in production');
+  }
+}
+
 const stripe = require('stripe')(stripeSecretKey);
 
 app.use(express.json());

@@ -479,12 +479,14 @@
             Oh My <span>Mochi</span>
           </div>
           <nav>
+            <a href="index.html" class="nav-logo">Oh My <span>Mochi</span></a>
+            <button class="nav-close">&times;</button>
             <ul>
               <li><a href="index.html">Home</a></li>
               <li><a href="shop.html">Shop</a></li>
               <li><a href="about.html">About</a></li>
               <li><a href="contact.html">Contact</a></li>
-              <li><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></li>
+              <li class="cart-icon"><a href="cart.html"><i class="fas fa-shopping-cart"></i><span class="cart-badge"></span></a></li>
             </ul>
           </nav>
         </div>
@@ -694,5 +696,6 @@
         if (this.value < 1) this.value = 1;
       });
     </script>
+    <script src="cart-badge.js"></script>
   </body>
 </html>

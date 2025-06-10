@@ -734,6 +734,7 @@
             
             // Save updated cart to localStorage
             localStorage.setItem("shoppingCart", JSON.stringify(cart));
+            updateCartBadge();
             
             // Show success message
             showAddToCartMessage(productName, cartItem.size);
@@ -806,5 +807,6 @@
         }
       });
     </script>
+    <script src="cart-badge.js"></script>
   </body>
 </html>

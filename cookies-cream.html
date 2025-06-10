@@ -178,6 +178,27 @@
         font-weight: 600;
       }
 
+      .cart-icon {
+        position: relative;
+      }
+
+      .cart-badge {
+        position: absolute;
+        top: -6px;
+        right: -10px;
+        background: red;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 0.65rem;
+        display: none;
+      }
+
+      .nav-logo {
+        display: none;
+        font-weight: 700;
+      }
+
       .nav-close {
         position: absolute;
         top: 20px;
@@ -541,6 +562,18 @@
           gap: 2rem;
         }
 
+        nav ul li a {
+          text-align: center;
+          font-size: 1.2rem;
+        }
+
+        .nav-logo {
+          display: block;
+          position: absolute;
+          top: 20px;
+          right: 60px;
+        }
+
         .mobile-toggle {
           display: block;
         }
@@ -580,6 +613,7 @@
         <div class="header-inner">
           <a href="index.html" class="logo">Oh My <span>Mochi</span></a>
           <nav>
+            <a href="index.html" class="nav-logo">Oh My <span>Mochi</span></a>
             <button class="nav-close">&times;</button>
             <ul>
               <li><a href="index.html">Home</a></li>
@@ -587,8 +621,8 @@
               <li><a href="about.html" class="active">About Us</a></li>
               <li><a href="reviews.html">Reviews</a></li>
               <li><a href="contact.html">Contact</a></li>
-              <li>
-                <a href="cart.html"><i class="fas fa-shopping-bag"></i></a>
+              <li class="cart-icon">
+                <a href="cart.html"><i class="fas fa-shopping-bag"></i><span class="cart-badge"></span></a>
               </li>
             </ul>
           </nav>
@@ -908,6 +942,7 @@
 
           // Save updated cart to localStorage
           localStorage.setItem("shoppingCart", JSON.stringify(cart));
+          updateCartBadge();
 
           // Show success message
           showAddToCartMessage(productName, cartItem.size);
@@ -962,5 +997,6 @@
         }
       });
     </script>
+    <script src="cart-badge.js"></script>
   </body>
 </html>
